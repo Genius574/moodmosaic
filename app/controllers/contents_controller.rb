@@ -1,6 +1,8 @@
 class ContentsController < ApplicationController
   def index
-    @contents = Content.all
+    @mood = current_user.moods.order(updated_at: :asc).last
+    @contents = Content.where(category_id: @mood.category.id)
+
   end
 
   def show
