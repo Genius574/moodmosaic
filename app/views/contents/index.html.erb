@@ -1,11 +1,12 @@
 <div class="container">
-<% @contents.each do |content| %>
-  <ul>
-    <%= link_to content_path(content) do %>
-    <li>
-      <%= content.title %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+  <% @contents.each do |content| %>
+    <div class="card">
+      <%= link_to content_path(content), class: 'card-link' do %>
+        <div class="card-body">
+          <h5 class="card-title"><%= content.title %></h5>
+          <p class="card-text">Some description or content here...</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
