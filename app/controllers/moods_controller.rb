@@ -7,7 +7,7 @@ class MoodsController < ApplicationController
     @mood = Mood.new(mood_params)
     @mood.user = current_user
     if @mood.save
-      redirect_to moods_path
+      redirect_to contents_path
     else
       render :new, status: :unprocessable_entity
     end

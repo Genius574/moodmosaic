@@ -9,9 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-<<<<<<< HEAD
   resources :moods, only: %i[new create]
-=======
   resources :contents, only: %i[index show]
->>>>>>> master
 end
