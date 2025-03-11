@@ -19,9 +19,10 @@ serious_category = Category.create(name: 'Serious')
 puts "Categories created: Uplifting, Emotional, Calming, Serious"
 
 # Create Users
-user1 = User.create(email: 'siza@mood.com', password: 'password123')
-user2 = User.create(email: 'genius@mood.com', password: 'password123')
-user3 = User.create(email: 'moodmosaic@mood.com', password: 'password123')
+user1 = User.create(email: 'siza@mood.com', password: 'password123', first_name: 'Siza', last_name: 'Mpafa')
+user2 = User.create(email: 'genius@mood.com', password: 'password123', first_name: 'Genius', last_name: 'Chakurira')
+user3 = User.create(email: 'moodmosaic@mood.com', password: 'password123', first_name: 'Mood', last_name: 'Mosaic')
+
 
 puts "Users created: John, Jane, Alice"
 
