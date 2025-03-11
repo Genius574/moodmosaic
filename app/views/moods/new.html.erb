@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Hey, <%= current_user.email %>! How are you feeling today?</h1>
+  <%= simple_form_for @mood do |f| %>
+    <%= f.input :feeling, collection: Mood.feelings.keys.map { |k| [k.humanize, k] }, as: :select %>
+    <%= f.association :category %>
+    <%= f.submit "Pick Your Mood" %>
+  <% end %>
+</div>
