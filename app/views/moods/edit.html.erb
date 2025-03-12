@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Ohwww, you are feeling <%= @mood.feeling %>! What content do you want to see?</h1>
+    <%= simple_form_for @mood do |f| %>
+        <%= f.association :category %>
+        <%= f.submit "Pick Your Mood" %>
+    <% end %>
+</div>
