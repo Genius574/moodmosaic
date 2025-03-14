@@ -1,7 +1,8 @@
+    <h1 class="centered-heading"><%= @mood.category.name %>  playlists and blogs for a <%=@mood.feeling%> feeling</h1>
 <div class="container">
-<h1>You can read some bogs here:</h1>
-  <% @contents.each do |content| %>
-    <div class="card">
+<% @all_content.each do |content| %>
+<% if content.class == Content %>
+    <div class="blog-card">
       <%= link_to content_path(content), class: 'card-link' do %>
         <div class="card-body">
           <h5 class="card-title"><%= content.title %></h5>
@@ -9,23 +10,33 @@
         </div>
       <% end %>
     </div>
+<% else %>
+
+  <% if content[:preview_url] %>
+    <p>Preview:</p>
+    <audio controls>
+      <source src="<%= content[:preview_url] %>" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   <% end %>
-</div>
+  <iframe src="<%= content[:embed_url] %>" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+<% end %>
+<% end %>
+
+
+
+
+
+  <%# @contents.each do |content| %>
+  <%# end %>
+<!--</div>
 <hr>
 <div class="container">
-    <h1><%= @mood.category.name %>  tracks for a <%=@mood.feeling%> feeling</h1>
     <div class="cards">
-  <% @songs.each do |song| %>
+  <%# @songs.each do |song| %>-->
     <%# <div class="card-category"> %>
-      <% if song[:preview_url] %>
-        <p>Preview:</p>
-        <audio controls>
-          <source src="<%= song[:preview_url] %>" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      <% end %>
-      <iframe src="<%= song[:embed_url] %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <%# </div> %>
-  <% end %>
-    </div>
+  <%# end %>
+<!--    </div>
 </div>
+-->
