@@ -9,6 +9,7 @@ gem "rails", "~> 7.1.5", ">= 7.1.5.1"
 gem "sprockets-rails"
 gem "ruby-openai"
 
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -26,6 +27,9 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'httparty'
+gem 'nokogiri'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -51,6 +55,7 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem "unsplash"
 
 group :development, :test do
   gem "dotenv-rails"
@@ -67,6 +72,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "selenium-webdriver"
 end
 
 group :test do

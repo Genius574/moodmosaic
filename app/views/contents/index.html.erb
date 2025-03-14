@@ -1,12 +1,34 @@
 <div class="container">
-  <% @contents.each do |content| %>
-    <div class="card">
-      <%= link_to content_path(content), class: 'card-link' do %>
-        <div class="card-body">
-          <h5 class="card-title"><%= content.title %></h5>
-          <p class="card-text">Some description or content here...</p>
-        </div>
+  <h5 class="item-title text-center display-4 font-weight-bold" style="font-family: 'Oswald', sans-serif; padding: 15px;">
+    Since you're feeling <%= @mood.feeling.upcase %>, here is some content for you
+  </h5>
+
+  <!-- Display Mood-Related Content -->
+  <% if @contents.present? %>
+    <% @contents.each do |content| %>
+      <div class="card">
+        <%= link_to content_path(content), class: 'card-link' do %>
+          <div class="card-body">
+            <h5 class="card-title"><%= content.title %></h5>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No content available for this mood.</p>
+  <% end %>
+
+  <!-- Display Mood-Related Images -->
+  <h1>Your Mood-Based Images</h1>
+
+  <% if @images.present? %>
+    <h2>Images Related to Your Mood</h2>
+    <div class="image-gallery">
+      <% @images.each do |image_url| %>
+        <%= image_tag image_url, alt: "Mood image", class: "mood-image" %>
       <% end %>
     </div>
+  <% else %>
+    <p>No images found for this mood.</p>
   <% end %>
 </div>

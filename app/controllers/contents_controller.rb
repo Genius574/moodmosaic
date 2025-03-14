@@ -1,15 +1,22 @@
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
-    @contents = Content.where(category_id: @mood.category.id)
-
+    # @contents = Content.where(category_id: @mood.category.id)
+    # feeling = params[:feeling]
+    # if feeling.present? && FEELING_KEYWORDS[feeling.to_sym].present?
+    #   keywords = FEELING_KEYWORDS[feeling.to_sym]
+    #   keyword = keyword.sample
+    #   photos = Unsplash::Photo.search(keyword,10)
+    #   if photos.present?
+    #     photos.each do |photo|
+    #     image_url = photos.urls['regular']
+    #     photographer = photo.user.name
   end
 
   def show
     @content = Content.find(params[:id])
     category = @content.category.name
-    mood = @content.category.name # Example, depending on how you categorize moods
-
+    mood = @content.category.name
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
