@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :moods, only: %i[new create edit update]
   resources :contents, only: %i[index show]
+
+  get '/auth/spotify/callback', to: 'omniauth_callbacks#spotify'
 end

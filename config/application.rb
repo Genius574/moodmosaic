@@ -16,7 +16,7 @@ module Moodmosaic
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
-
+    # RSpotify::authenticate("4da521e12fd0480da92a860f837c1456", "7d0b9677929a48f386482ad2680ee55f")
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

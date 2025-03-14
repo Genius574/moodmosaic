@@ -1,8 +1,13 @@
+require_dependency 'spotify_service'
+
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
     @contents = Content.where(category_id: @mood.category.id)
-
+    # @playlists = @mood.retrieve_playlists
+    # @mood = @mood
+    @spotify_service = SpotifyService.new(@mood)
+    @songs = @spotify_service.fetch_playlists
   end
 
   def show

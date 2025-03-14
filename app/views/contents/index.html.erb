@@ -10,3 +10,21 @@
     </div>
   <% end %>
 </div>
+<hr>
+<div class="container">
+    <h1><%= @mood.category.name %>  tracks for a <%=@mood.feeling%> feeling</h1>
+    <div class="cards">
+  <% @songs.each do |song| %>
+    <%# <div class="card-category"> %>
+      <% if song[:preview_url] %>
+        <p>Preview:</p>
+        <audio controls>
+          <source src="<%= song[:preview_url] %>" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      <% end %>
+      <iframe src="<%= song[:embed_url] %>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <%# </div> %>
+  <% end %>
+    </div>
+</div>
