@@ -1,5 +1,5 @@
+<h1 class="centered-heading">You can read some blogs here:</h1>
 <div class="container">
-<h1>You can read some bogs here:</h1>
   <% @contents.each do |content| %>
     <div class="card">
       <%= link_to content_path(content), class: 'card-link' do %>
@@ -12,8 +12,8 @@
   <% end %>
 </div>
 <hr>
+    <h1 class="centered-heading"><%= @mood.category.name %>  tracks for a <%=@mood.feeling%> feeling</h1>
 <div class="container">
-    <h1><%= @mood.category.name %>  tracks for a <%=@mood.feeling%> feeling</h1>
     <div class="cards">
   <% @songs.each do |song| %>
     <%# <div class="card-category"> %>
