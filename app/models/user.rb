@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :moods, dependent: :destroy
   has_many :mood_logs, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
 end
