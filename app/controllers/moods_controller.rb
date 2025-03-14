@@ -20,7 +20,7 @@ class MoodsController < ApplicationController
 
   def update
     @mood = Mood.find(params[:id])
-    
+
     if @mood = Mood.update(mood_params)
       redirect_to contents_path
     else
@@ -32,5 +32,5 @@ class MoodsController < ApplicationController
 
   def mood_params
     params.require(:mood).permit(:feeling, :category_id)
-  end 
+  end
 end
