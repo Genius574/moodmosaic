@@ -59,8 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_102641) do
 
   add_foreign_key "contents", "categories"
   add_foreign_key "contents", "moods"
-  add_foreign_key "mood_logs", "moods"
-  add_foreign_key "mood_logs", "users"
   add_foreign_key "moods", "categories"
   add_foreign_key "moods", "users"
 end
