@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :mood_logs, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
+  def current_mood
+    moods.order(updated_at: :asc).last
+  end
+
 end
