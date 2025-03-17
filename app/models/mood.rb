@@ -8,4 +8,3 @@ class Mood < ApplicationRecord
   #   playlists = RSpotify::Playlist.search("#{feeling} #{category.name}")
   # end
 end
-
