@@ -1,0 +1,28 @@
+.moods {
+  display: flex;
+  gap: 20px;  // Adjust the gap between mood items
+  justify-content: center;  // Center the images horizontally
+}
+
+.mood-item {
+  text-align: center;  // Center the text under the image
+}
+
+.mood-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: none;  // Remove any borders from the image inside the button
+}
+
+button {
+  border: none;  // Remove the border from the button
+  background: transparent;  // Remove any background color from the button
+  padding: 0;  // Remove any padding around the button
+}
+
+.mood-label {
+  margin-top: 5px;  // Adds space between the image and the text
+  font-size: 14px;  // You can adjust the size of the text as needed
+  color: #333;  // You can change the color of the text
+}

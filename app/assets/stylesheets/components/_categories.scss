@@ -1,0 +1,22 @@
+.category-item {
+  margin: 10px;
+  display: inline-block;
+}
+
+.category-image {
+  width: 100px;  /* Resize image */
+  height: 100px;
+}
+
+.category-label {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

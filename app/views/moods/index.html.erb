@@ -1,0 +1,15 @@
+<div class="moods-container">
+  <% @moods.each do |mood| %>
+    <div class="card mood-card">
+      <div class="card-header">
+        <%= mood.created_at.strftime("%B %d, %Y %I:%M %p") %>
+      </div>
+      <div class="card-body">
+        <div class="icons">
+          <%= mood.mood_icon.html_safe %>
+          <%= mood.category&.category_icon&.html_safe %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

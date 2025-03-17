@@ -30,6 +30,9 @@
             </li>
           <% elsif controller_name == "moods" && action_name == "new" %>
             <!-- Moods New page(select a feeling) -->
+            <li class="nav-item">
+            <%= link_to 'View Activity Logs', moods_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag "avatar_mood-removebg-preview.png", class: "avatar", alt: "dropdown menu" %>              </a>
@@ -42,6 +45,9 @@
              <li class="nav-item">
                <%= link_to "Change A Feeling?", new_mood_path, class: "nav-link" %>
              </li>
+            <li class="nav-item">
+            <%= link_to 'View Activity Logs', moods_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag "avatar_mood-removebg-preview.png", class: "avatar", alt: "dropdown menu" %>              </a>
@@ -57,6 +63,9 @@
             <li class="nav-item">
                <%= link_to "Change A Category?", edit_mood_path(@mood), class: "nav-link" %>
              </li>
+            <li class="nav-item">
+            <%= link_to 'View Activity Logs', moods_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag "avatar_mood-removebg-preview.png", class: "avatar", alt: "dropdown menu" %>
