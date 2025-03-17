@@ -1,1 +1,7 @@
 // Specific CSS for your home-page
+.home-background {
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
