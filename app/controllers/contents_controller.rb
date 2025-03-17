@@ -1,5 +1,4 @@
 require_dependency 'spotify_service'
-
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
@@ -7,7 +6,6 @@ class ContentsController < ApplicationController
     @quotes = Content.where(category_id: @mood.category.id, content_type: "quote")
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
-
     @all_content = []
     @blogs.each do |blog|
       @all_content << blog
@@ -26,5 +24,4 @@ class ContentsController < ApplicationController
     # call the blog method
     @content.blog
   end
-
 end
