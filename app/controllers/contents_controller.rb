@@ -1,22 +1,17 @@
 require_dependency 'spotify_service'
-
 class ContentsController < ApplicationController
   def index
-<<<<<<< HEAD
     @mood = current_user.moods.order(updated_at: :asc).last
-    @blogs = Content.where(category_id: @mood.category.id)
-=======
-    @mood = current_user.current_mood
-    @contents = Content.where(category_id: @mood.category.id)
-    # LATER - use chat to generate blog titles
-
->>>>>>> master
+    @blogs = Content.where(category_id: @mood.category.id, content_type: "blogs")
+    @quotes = Content.where(category_id: @mood.category.id, content_type: "quote")
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
-
     @all_content = []
     @blogs.each do |blog|
       @all_content << blog
+    end
+    @quotes.each do |quote|
+      @all_content << quote
     end
     @songs.each do |song|
       @all_content << song
@@ -26,25 +21,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
-<<<<<<< HEAD
-    category = @content.category.name
-    mood = @content.category.name # Example, depending on how you categorize moods
-    client = OpenAI::Client.new
-    chatgpt_response = client.chat(parameters: {
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "user",
-          content: "Generate a blog post based on the mood: #{mood} and category: #{category}. Provide the title in plain text without any markdown or special characters, and format the body in normal text. Avoid links to external resources like YouTube, Spotify, or Podcasts."
-        }
-      ],
-      temperature: 0.7
-    })
-    @content_suggestions = chatgpt_response["choices"][0]["message"]["content"]
-=======
     # call the blog method
     @content.blog
->>>>>>> master
   end
-
 end

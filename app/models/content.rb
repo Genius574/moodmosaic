@@ -27,7 +27,7 @@ class Content < ApplicationRecord
       temperature: 0.7
     })
     new_blog = chatgpt_response["choices"][0]["message"]["content"]
-    update(blog: new_blog, content_type: "blog")
+    update(blog: new_blog, content_type: "blogs")
     return new_blog
   end
 end
