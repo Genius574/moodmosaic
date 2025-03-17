@@ -1,32 +1,8 @@
 <div class="container">
-  <h1>Hey, <%= current_user.first_name %>! How’s your mood? We’ve got something just for you</h1>
+<h1 style="text-align: center">Hey, <%= current_user.first_name %>! How are you feeling right now?</h1>
 <div class="moods d-flex">
-  <div class="mood-item">
-    <%= button_to image_tag("happy.png", alt: "happy", class: "mood-image"), moods_path, method: :post, params: { mood: { feeling: Mood.feelings.keys[0] } } %>
-    <p class="mood-label">Happy</p>
-  </div>
-
-  <div class="mood-item">
-    <%= button_to image_tag("meh.png", alt: "meh", class: "mood-image"), moods_path, method: :post, params: { mood: { feeling: Mood.feelings.keys[1] } } %>
-    <p class="mood-label">Meh</p>
-  </div>
-
-  <div class="mood-item">
-    <%= button_to image_tag("sda.png", alt: "sad", class: "mood-image"), moods_path, method: :post, params: { mood: { feeling: Mood.feelings.keys[2] } } %>
-    <p class="mood-label">Sad</p>
-  </div>
+<% @moods.each do |mood| %>
+<%= button_to mood.mood_icon.html_safe, moods_path, class: "mood-item", params: { mood: { feeling: mood.feeling } } %>
+<% end %>
 </div>
 </div>
-
-<%# Mood.where.not(feeling: nil).each do |mood| %>
-  <%#= mood.icon.html_safe %>
-<%# end %>
-<!---->
-<!--<div class="logs d-flex">-->
- <%# current_user.moods.each do |log|%>
- <%# raise %>
-<!--    <div class="log-card">-->
-     <%#= log.mood_icon%>
-<!--    </div>-->
- <%# end %>
-<!--</div>-->

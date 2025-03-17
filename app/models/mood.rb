@@ -7,11 +7,11 @@ class Mood < ApplicationRecord
   def mood_icon
     case feeling
     when 'happy'
-      '<i class="fa-regular fa-face-smile-beam"></i>'
+      '<i class="fa-regular fa-face-smile-beam mood-icon--happy"></i>'
     when 'meh'
-      '<i class="fa-regular fa-face-meh"></i>'
+      '<i class="fa-regular fa-face-meh mood-icon--meh"></i>'
     when 'sad'
-      '<i class="fa-regular fa-face-sad-tear"></i>'
+      '<i class="fa-regular fa-face-sad-tear mood-icon--sad"></i>'
     else
       ''
     end
