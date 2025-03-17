@@ -2,8 +2,15 @@ require_dependency 'spotify_service'
 
 class ContentsController < ApplicationController
   def index
+<<<<<<< HEAD
     @mood = current_user.moods.order(updated_at: :asc).last
     @blogs = Content.where(category_id: @mood.category.id)
+=======
+    @mood = current_user.current_mood
+    @contents = Content.where(category_id: @mood.category.id)
+    # LATER - use chat to generate blog titles
+
+>>>>>>> master
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
 
@@ -19,6 +26,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
+<<<<<<< HEAD
     category = @content.category.name
     mood = @content.category.name # Example, depending on how you categorize moods
     client = OpenAI::Client.new
@@ -33,5 +41,10 @@ class ContentsController < ApplicationController
       temperature: 0.7
     })
     @content_suggestions = chatgpt_response["choices"][0]["message"]["content"]
+=======
+    # call the blog method
+    @content.blog
+>>>>>>> master
   end
+
 end

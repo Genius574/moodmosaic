@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_112027) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_17_102641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,7 +27,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_112027) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "blog"
+    t.bigint "mood_id"
     t.index ["category_id"], name: "index_contents_on_category_id"
+    t.index ["mood_id"], name: "index_contents_on_mood_id"
   end
 
   create_table "moods", force: :cascade do |t|
@@ -55,6 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_112027) do
   end
 
   add_foreign_key "contents", "categories"
+  add_foreign_key "contents", "moods"
+  add_foreign_key "mood_logs", "moods"
+  add_foreign_key "mood_logs", "users"
   add_foreign_key "moods", "categories"
   add_foreign_key "moods", "users"
 end
