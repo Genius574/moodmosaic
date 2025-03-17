@@ -4,8 +4,17 @@ class MoodsController < ApplicationController
   end
 
   def new
-    @mood = Mood.new
+    @moods = []
+    @happy_mood = Mood.new(feeling: 'happy')
+    @moods << @happy_mood
+    @meh_mood = Mood.new(feeling: 'meh')
+    @moods << @meh_mood
+    @sad_mood = Mood.new(feeling: 'sad')
+    @moods << @sad_mood
+    @moods
   end
+
+
 
   def create
     @mood = Mood.new(mood_params)
@@ -20,11 +29,24 @@ class MoodsController < ApplicationController
 
   def edit
     @mood = Mood.find(params[:id])
+    @categories = []
+    @uplifting_category = Category.find_by(name: 'Uplifting')
+    @categories << @uplifting_category
+
+    @emotional_category = Category.find_by(name: 'Emotional')
+    @categories << @emotional_category
+
+    @calming_category = Category.find_by(name: 'Calming')
+    @categories << @calming_category
+
+    @serious_category = Category.find_by(name: 'Serious')
+    @categories << @serious_category
+    @categories
   end
 
   def update
     @mood = Mood.find(params[:id])
-    category = Category.find_by(name: params[:mood][:category])
+    category = Category.find(params[:mood][:category])
     @mood.category = category
     if @mood.save!
       # ActivityLog.create!(user: current_user, mood: @mood, category: @mood.category, action: "Selected category")

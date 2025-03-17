@@ -1,25 +1,10 @@
 <div class="container">
-  <h1>It sounds like you're feeling <%= @mood.feeling %> today. What would feel helpful to focus on right now?</h1>
+  <h1 style="text-align: center">It sounds like you're feeling <%= @mood.feeling %> today. What would feel helpful to focus on right now?</h1>
 
   <div class="categories d-flex">
-    <div class="category-item">
-      <%= button_to image_tag("uplifting.png", alt: "uplifting", class: "category-image"), mood_path(@mood), method: :patch,  params: { mood: { category: Category::NAMES[0] } } %>
-      <p class="category-label">Uplifting</p>
-    </div>
 
-    <div class="category-item">
-      <%= button_to image_tag("emotional.png", alt: "emotional", class: "category-image"), mood_path(@mood), method: :patch,  params: { mood: { category: Category::NAMES[1] } }  %>
-      <p class="category-label">Emotional</p>
-    </div>
-
-    <div class="category-item">
-      <%= button_to image_tag("calming.png", alt: "calming", class: "category-image"), mood_path(@mood), method: :patch,  params: { mood: { category: Category::NAMES[2] } } %>
-      <p class="category-label">Calming</p>
-    </div>
-
-    <div class="category-item">
-      <%= button_to image_tag("serious.png", alt: "serious", class: "category-image"), mood_path(@mood), method: :patch,  params: { mood: { category: Category::NAMES[3] } }%>
-      <p class="category-label">Serious</p>
-    </div>
+      <% @categories.each do |category| %>
+      <%= button_to category.category_icon.html_safe, mood_path(@mood), class: "category-item", method: :patch, params: { mood: { category: category}} %>
+      <% end %>
   </div>
 </div>

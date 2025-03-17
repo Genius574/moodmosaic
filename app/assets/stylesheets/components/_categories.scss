@@ -1,22 +1,23 @@
 .category-item {
-  margin: 10px;
-  display: inline-block;
+  text-align: center;  // Center the text under the image
+  background-color: #4894E1;
+  width: 55vw;
+  height: 20vh;
+  padding: 3rem;
+  border-radius: 20px;
 }
 
-.category-image {
-  width: 100px;  /* Resize image */
-  height: 100px;
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  // Adjust the gap between mood items
+  justify-content: center;  // Center the images horizontally
 }
-
-.category-label {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 5px;
+i{
+  font-size: 6rem;
 }
-
 button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  border: none;  // Remove the border from the button
+  background: transparent;  // Remove any background color from the button
+  padding: 0;  // Remove any padding around the button
 }
