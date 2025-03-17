@@ -33,15 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_102641) do
     t.index ["mood_id"], name: "index_contents_on_mood_id"
   end
 
-  create_table "mood_logs", force: :cascade do |t|
-    t.bigint "mood_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["mood_id"], name: "index_mood_logs_on_mood_id"
-    t.index ["user_id"], name: "index_mood_logs_on_user_id"
-  end
-
   create_table "moods", force: :cascade do |t|
     t.integer "feeling"
     t.bigint "user_id", null: false
@@ -68,8 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_102641) do
 
   add_foreign_key "contents", "categories"
   add_foreign_key "contents", "moods"
-  add_foreign_key "mood_logs", "moods"
-  add_foreign_key "mood_logs", "users"
   add_foreign_key "moods", "categories"
   add_foreign_key "moods", "users"
 end
