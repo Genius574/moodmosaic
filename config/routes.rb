@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :moods, only: %i[new create edit update]
+  resources :moods, only: %i[index new create edit update]
   resources :contents, only: %i[index show]
+  resources :activity_logs, only: [:index]
 
   get '/auth/spotify/callback', to: 'omniauth_callbacks#spotify'
 end

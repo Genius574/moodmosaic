@@ -4,8 +4,16 @@ class Mood < ApplicationRecord
   belongs_to :category, optional: true
   enum feeling: %i[happy meh sad]
 
-  # def retrieve_playlists
-  #   playlists = RSpotify::Playlist.search("#{feeling} #{category.name}")
-  # end
+  def mood_icon
+    case feeling
+    when 'happy'
+      '<i class="fa-regular fa-face-smile-beam"></i>'
+    when 'meh'
+      '<i class="fa-regular fa-face-meh"></i>'
+    when 'sad'
+      '<i class="fa-regular fa-face-sad-tear"></i>'
+    else
+      ''
+    end
+  end
 end
-

@@ -1,4 +1,8 @@
 class MoodsController < ApplicationController
+  def index
+    @moods = current_user.moods.includes(:category).order(created_at: :desc)
+  end
+
   def new
     @mood = Mood.new
   end
@@ -6,8 +10,8 @@ class MoodsController < ApplicationController
   def create
     @mood = Mood.new(mood_params)
     @mood.user = current_user
-    # @mood.category_id = 0
     if @mood.save
+      # ActivityLog.create!(user: current_user, mood: @mood, action: "Mood selected")
       redirect_to edit_mood_path(@mood)
     else
       render :new, status: :unprocessable_entity
@@ -20,8 +24,10 @@ class MoodsController < ApplicationController
 
   def update
     @mood = Mood.find(params[:id])
-
-    if @mood = Mood.update(mood_params)
+    category = Category.find_by(name: params[:mood][:category])
+    @mood.category = category
+    if @mood.save!
+      # ActivityLog.create!(user: current_user, mood: @mood, category: @mood.category, action: "Selected category")
       redirect_to contents_path
     else
       render :edit, status: :unprocessable_entity

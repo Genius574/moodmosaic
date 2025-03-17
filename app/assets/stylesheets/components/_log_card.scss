@@ -1,0 +1,16 @@
+.moods-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mood-card {
+  width: 300px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  font-size: 24px;
+}
+

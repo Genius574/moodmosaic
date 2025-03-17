@@ -3,14 +3,12 @@ require_dependency 'spotify_service'
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
-    @contents = Content.where(category_id: @mood.category.id)
-    # @playlists = @mood.retrieve_playlists
-    # @mood = @mood
+    @blogs = Content.where(category_id: @mood.category.id)
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
 
     @all_content = []
-    @contents.each do |blog|
+    @blogs.each do |blog|
       @all_content << blog
     end
     @songs.each do |song|
@@ -23,7 +21,6 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     category = @content.category.name
     mood = @content.category.name # Example, depending on how you categorize moods
-
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
