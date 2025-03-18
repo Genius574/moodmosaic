@@ -1,7 +1,9 @@
+require "open-uri"
 class Content < ApplicationRecord
   belongs_to :category
   belongs_to :mood, optional: true
-  enum content_type: %i[spotify youtube blogs quote]
+  has_one_attached :photo
+  enum content_type: %i[spotify youtube blogs quote image]
 
   def blog
     if super.blank?
@@ -29,5 +31,21 @@ class Content < ApplicationRecord
     new_blog = chatgpt_response["choices"][0]["message"]["content"]
     update(blog: new_blog, content_type: "blogs")
     return new_blog
+  end
+
+
+  def set_photo
+    client = OpenAI::Client.new
+    response = client.images.generate(parameters: {
+      prompt: "An image for a person feeling #{mood.feeling} and wanting an image that is #{mood.category.name}", size: "256x256"
+    })
+
+    url = response["data"][0]["url"]
+    puts url
+    file = URI.parse(url).open
+      puts file
+    photo.purge if photo.attached?
+    photo.attach(io: file, filename: "ai_generated_image.jpg", content_type: "image/png")
+    return photo
   end
 end

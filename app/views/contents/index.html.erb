@@ -1,18 +1,35 @@
     <h1 class="centered-heading"><%= @mood.category.name %>  playlists and blogs for a <%=@mood.feeling%> feeling</h1>
-<div class="container">
+<div class="flexed-container">
 <% @all_content.each do |content| %>
 <% if content.class == Content %>
+<% case content.content_type %>
+<% when 'image' %>
 
-    <div class="blog-card">
+<%= cl_image_tag(content.photo.key) %>
+<% when 'blog' %>
+ <div class="blog-card">
       <%= link_to content_path(content), class: 'card-link' do %>
         <div class="card-body">
           <h5 class="card-title"><%= content.title %></h5>
-          <% if content.blogs? %>
+
             <%= link_to 'read more...', content_path(content) %>
-          <% end %>
+
         </div>
       <% end %>
     </div>
+<% when 'quote' %>
+<div class="quote-card">
+      <%= link_to content_path(content), class: 'card-link' do %>
+        <div class="card-body">
+          <h5 class="card-title">"<%= content.title %>"</h5>
+
+
+
+        </div>
+      <% end %>
+    </div>
+<% end %>
+
 <% else %>
 
   <% if content[:preview_url] %>
@@ -22,7 +39,7 @@
       Your browser does not support the audio element.
     </audio>
   <% end %>
-  <iframe src="<%= content[:embed_url] %>" frameborder="0" allowtransparency="true" allow="encrypted-media" theme='dark'></iframe>
+  <iframe src="<%= content[:embed_url] %>" frameborder="1" allowtransparency="true" allow="encrypted-media"></iframe>
 
 <% end %>
 <% end %>
@@ -36,7 +53,7 @@
   <%# end %>
 <!--</div>
 <hr>
-<div class="container">
+<div class="flexed-container">
     <div class="cards">
   <%# @songs.each do |song| %>-->
     <%# <div class="card-category"> %>
