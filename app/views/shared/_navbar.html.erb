@@ -1,25 +1,23 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom">
-  <div class="container-fluid">
-    <ul class="navbar-nav mx-auto">
-
-      </li>
-      <li class="nav-item">
-        <%= link_to new_mood_path, class: "nav-link" do %>
+<div class="footer">
+  <div class="flexed-container-fluid">
+    <ul class="footer-items">
+      <li class="footer-item">
+        <%= link_to new_mood_path, class: "footer-link" do %>
           <i class="fas fa-smile"></i> Mood
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to moods_path, class: "nav-link" do %>
-          <i class="fas fa-history"></i> Activity
+      <li class="footer-item">
+        <%= link_to  questions_path, class: "footer-link" do %>
+          <i class="fas fa-message"></i> chat
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to contents_path, class: "nav-link" do %>
+      <li class="footer-item">
+        <%= link_to contents_path, class: "footer-link" do %>
           <i class="fas fa-book-open"></i> Content
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+      <li class="footer-item">
+        <%= link_to moods_path, class: "footer-link" do %>
           <i class="fas fa-user"></i> Profile
         <% end %>
       </li>

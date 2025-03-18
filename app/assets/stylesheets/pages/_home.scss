@@ -1,7 +1,30 @@
 // Specific CSS for your home-page
-.home-background {
+.home-page{
   background-image: url('/assets/background.png');
   background-size: cover;
   background-position: center center;
   height: 100vh;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+.container h1{
+  color: #48E1E1;
+  font-size: xxx-large;
+  font-weight: 900;
+}
+.container p{
+  color: #48E1E1;
+  font-size: larger;
+}
+
+
+
+
+
+
