@@ -1,53 +1,67 @@
 .moods-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
+  gap: 4px;
+}
+
+// .mood-card {
+//   width: 300px;
+// }
+
+// .icons {
+//   display: flex;
+//   gap: 10px;
+//   font-size: 24px;
+// }
+
+.card-body--happy {
+  background-color: $happy;
+  font-size: 1rem;
+
+}
+
+.card-body--meh {
+  background-color: $meh;
+}
+
+.card-body--sad {
+  background-color: $sad;
+}
+
+.mood-log-header {
+  display: flex;
+  justify-content: evenly;
 }
 
 .mosaic-card {
+
   display: flex;
   border-radius: 24px;
-  // background-color: #4894E1;
-  padding: 0.75rem;
-  width: 48%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-items: center;
+  height: 10vh;
+  width: fit-content;
+  padding: 0.5rem;
 
-  .mosaic-card--happy {
-    background-color: yellow;
-  }
-  .mosaic-card--meh {
-    background-color: orange;
-  }
-  .mosaic-card--sad {
-    background-color: red;
-  }
   .mosaic-feeling {
-    flex: 1;
-    font-size: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 0.5rem;
+    padding: 0.6rem;
+
+    i {
+      font-size: 2.5rem;
+    }
+
   }
 
   .mosaic-details {
-    flex: 2;
-    padding-left: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .mosaic-date {
-      font-size: 0.9rem;
-      color: #333;
-      margin-bottom: 0.5rem;
+
+    i {
+      font-size: 1.5rem;
     }
 
-    .category-icon i {
-      font-size: 3rem;
+    p {
+      font-size: 0.6rem;
+      margin-bottom: 8px;
+      margin-right: 2px
     }
 
   }
-
 }

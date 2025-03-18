@@ -1,10 +1,8 @@
 <div class="flexed-container">
   <h1 style="text-align: center">It sounds like you're feeling <%= @mood.feeling %> today. What would feel helpful to focus on right now?</h1>
-
   <div class="categories d-flex">
-
-      <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
       <%= button_to category.category_icon.html_safe, mood_path(@mood), class: "category-item", method: :patch, params: { mood: { category: category}} %>
-      <% end %>
+    <% end %>
   </div>
 </div>
