@@ -1,14 +1,17 @@
 <div class="container">
+  <div class="mood-log-header">
+    <h1 class="my-4">Mood Mosaic</h1>
+    <%= link_to 'log out', '#'  %>
+  </div>
   <div class="moods-container">
     <% @moods.each do |mood| %>
-      <div class="card mood-card">
-        <div class="card-header">
-          <%= mood.created_at.strftime("%B %d, %Y %I:%M %p") %>
+      <div class="mosaic-card <%= class_names("card-body--#{mood.feeling}") %>">
+        <div class="mosaic-feeling">
+          <%= mood.mood_icon.html_safe %>
         </div>
-        <div class="<%= class_names('card-body', "card-body--#{mood.feeling}") %>">
-         <!--<div class="<%#= class_names('icons', "icons--#{mood.feeling}") %>">-->
-         <div class="icons">
-            <%= mood.mood_icon.html_safe %>
+        <div class="mosaic-details">
+          <p><%= mood.created_at.strftime('%d %b') %></p>
+          <div id="icon">
             <%= mood.category&.category_icon&.html_safe %>
           </div>
         </div>

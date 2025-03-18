@@ -1,27 +1,67 @@
 .moods-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 4px;
 }
 
-.mood-card {
-  width: 300px;
-}
+// .mood-card {
+//   width: 300px;
+// }
 
-.icons {
-  display: flex;
-  gap: 10px;
-  font-size: 24px;
-}
+// .icons {
+//   display: flex;
+//   gap: 10px;
+//   font-size: 24px;
+// }
 
 .card-body--happy {
-  background-color: yellow;
+  background-color: $happy;
+  font-size: 1rem;
+
 }
 
 .card-body--meh {
-  background-color: orange;
+  background-color: $meh;
 }
 
 .card-body--sad {
-  background-color: red;
+  background-color: $sad;
+}
+
+.mood-log-header {
+  display: flex;
+  justify-content: evenly;
+}
+
+.mosaic-card {
+
+  display: flex;
+  border-radius: 24px;
+  height: 10vh;
+  width: fit-content;
+  padding: 0.5rem;
+
+  .mosaic-feeling {
+    padding: 0.6rem;
+
+    i {
+      font-size: 2.5rem;
+    }
+
+  }
+
+  .mosaic-details {
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.6rem;
+      margin-bottom: 8px;
+      margin-right: 2px
+    }
+
+  }
 }
