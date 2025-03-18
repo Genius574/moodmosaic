@@ -2,6 +2,8 @@ class ChatbotJob < ApplicationJob
   queue_as :default
 
   def perform(question)
+    return if question.user_question.blank?
+    Rails.logger.info "Running ChatbotJob for Question ID: #{question.id}, Content: #{question.user_question}"
     @question = question
     response = fetch_ai_response
     @question.update(ai_answer: response)

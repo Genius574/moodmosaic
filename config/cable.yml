@@ -1,5 +1,5 @@
 development:
-adapter: solid_cable
+  adapter: solid_cable
 
 test:
   adapter: test

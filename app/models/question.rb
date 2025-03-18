@@ -1,9 +1,9 @@
 class Question < ApplicationRecord
   belongs_to :user
   validates :user_question, presence: true
-  after_create :fetch_ai_answer
+  # after_create :fetch_ai_answer
 
-  # private
+  private
 
   def fetch_ai_answer
     ChatbotJob.perform_now(self)
