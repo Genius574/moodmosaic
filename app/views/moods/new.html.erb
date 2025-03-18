@@ -1,8 +1,8 @@
 <div class="container">
-<h1 style="text-align: center">Hey, <%= current_user.first_name %>! How are you feeling right now?</h1>
-<div class="moods d-flex">
-<% @moods.each do |mood| %>
-<%= button_to mood.mood_icon.html_safe, moods_path, class: "mood-item", params: { mood: { feeling: mood.feeling } } %>
-<% end %>
-</div>
+  <h1 style="text-align: center">Hey, <%= current_user.first_name %>! How are you feeling right now?</h1>
+  <div class="moods d-flex">
+    <% @moods.each do |mood| %>
+      <%= button_to mood.mood_icon.html_safe, moods_path, class: "mood-item", params: { mood: { feeling: mood.feeling } } %>
+    <% end %>
+  </div>
 </div>
