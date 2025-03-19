@@ -4,64 +4,64 @@
   flex-wrap: wrap;
   gap: 4px;
 }
-
-// .mood-card {
-//   width: 300px;
-// }
-
-// .icons {
-//   display: flex;
-//   gap: 10px;
-//   font-size: 24px;
-// }
-
 .card-body--happy {
   background-color: $happy;
   font-size: 1rem;
-
 }
-
 .card-body--meh {
   background-color: $meh;
 }
-
 .card-body--sad {
   background-color: $sad;
 }
-
 .mood-log-header {
   display: flex;
-  justify-content: evenly;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
-
+.mood-log-header h1 {
+  color: #4894E1;
+  font-size: 2.435rem;
+  margin-right: 47px;
+  font-weight: bold;
+}
+.logout-btn {
+  background-color: #000000;
+  color: beige;
+  padding: 0.5rem 1.25rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+.logout-btn:hover {
+  background-color: red;
+  color: beige;
+  text-decoration: none;
+}
 .mosaic-card {
-
   display: flex;
   border-radius: 24px;
   height: 10vh;
   width: fit-content;
   padding: 0.5rem;
-
   .mosaic-feeling {
     padding: 0.6rem;
-
     i {
       font-size: 2.5rem;
     }
-
   }
-
   .mosaic-details {
-
     i {
       font-size: 1.5rem;
     }
-
     p {
       font-size: 0.6rem;
       margin-bottom: 8px;
-      margin-right: 2px
+      margin-right: 2px;
+      color: #000;
     }
-
   }
 }

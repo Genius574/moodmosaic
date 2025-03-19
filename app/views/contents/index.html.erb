@@ -1,5 +1,5 @@
     <h1 class="centered-heading"><%= @mood.category.name %>  playlists and blogs for a <%=@mood.feeling%> feeling</h1>
-<div class="flexed-container">
+<div class="container">
 <% @all_content.each do |content| %>
 <% if content.class == Content %>
 <% case content.content_type %>
@@ -48,7 +48,7 @@
   <%# end %>
   <!--</div>
 <hr>
-<div class="flexed-container">
+<div class="container">
     <div class="cards">
   <%# @songs.each do |song| %>-->
   <%# <div class="card-category"> %>
