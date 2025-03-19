@@ -2,7 +2,7 @@
 require 'open-uri'
 # First, delete all contents that reference moods
 Content.delete_all
-
+Question.delete_all
 # Then delete all old data from moods, users, and categories
 Mood.delete_all
 User.delete_all
@@ -43,16 +43,16 @@ puts "Moods created for users."
 
 # Create Contents and associate them with moods and categories
 Content.create!(content_type: "spotify", category: uplifting_category, title: "Feel Good Vibes", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "youtube", category: emotional_category, title: "Feeling Down", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "blogs", category: calming_category, title: "Relaxing Music", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "youtube", category: uplifting_category, title: "Positive Energy", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "blogs", category: serious_category, title: "Tough Decisions", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: emotional_category, title: "Feeling Down", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: calming_category, title: "Relaxing Music", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: uplifting_category, title: "Positive Energy", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: serious_category, title: "Tough Decisions", url: "#", mood_id: Mood.all.sample.id)
 Content.create!(content_type: "spotify", category: serious_category, title: "Serious Talk", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "blogs", category: calming_category, title: "Peaceful Moments", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "youtube", category: emotional_category, title: "Sad but True", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: calming_category, title: "Peaceful Moments", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: emotional_category, title: "Sad but True", url: "#", mood_id: Mood.all.sample.id)
 Content.create!(content_type: "spotify", category: uplifting_category, title: "Inspiration", url: "#", mood_id: Mood.all.sample.id)
-Content.create!(content_type: "blogs", category: emotional_category, title: "Brighten Your Day", url: "#", mood_id: Mood.all.sample.id)
-Content.create!( content_type: "youtube", category: calming_category, title: "Meditative Sounds", url: "#", mood_id: Mood.all.sample.id)
+Content.create!(content_type: "blog", category: emotional_category, title: "Brighten Your Day", url: "#", mood_id: Mood.all.sample.id)
+Content.create!( content_type: "blog", category: calming_category, title: "Meditative Sounds", url: "#", mood_id: Mood.all.sample.id)
 # Add motivational quotes for each category
 # Uplifting Category Quotes
 Content.create!(content_type: "quote", category: uplifting_category, title: "Believe in yourself, and remember that the hardest challenges often lead to the most rewarding achievements. Keep pushing forward, because your breakthrough is just around the corner.", url: "#", mood_id: Mood.all.sample.id)
