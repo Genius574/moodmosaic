@@ -4,7 +4,7 @@ class SpotifyService
   end
 
   def fetch_playlists
-    results = RSpotify::Playlist.search("songs for a #{@mood.feeling} feeling that are #{@mood.category.name}", limit: 10)
+    results = RSpotify::Playlist.search("songs for a #{@mood.feeling} feeling that are #{@mood.category.name}", limit: 5)
     puts results
     results.map do |playlist|
       {

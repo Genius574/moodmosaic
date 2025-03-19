@@ -5,12 +5,7 @@ class ContentsController < ApplicationController
     @blogs = Content.where(category_id: @mood.category.id, content_type: "blog")
     @quotes = Content.where(category_id: @mood.category.id, content_type: "quote")
 
-    @photos = []
-    4.times do
-      photo = Content.create(mood_id: @mood.id, category_id: @mood.category.id, content_type: "image")
-      photo.set_photo
-      @photos << photo
-    end
+    @photos = Content.where(category_id: @mood.category.id, content_type: "image")
 
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
