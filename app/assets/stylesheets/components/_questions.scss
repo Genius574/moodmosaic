@@ -5,7 +5,7 @@
   font-size: 0.8rem;
 
   h1 {
-    border-bottom: 1px solid $gray-200;
+    // border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
     padding: 1rem;
   }
@@ -14,6 +14,10 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+    border: 1px solid #d1e7fd3b;
+    border-radius: 24px;
+    background-color: #d1e7fd3b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Added box shadow
   }
 
   .question {
@@ -30,18 +34,7 @@
     max-width: 70%;
     width: fit-content;
     word-wrap: break-word;
-    font-size: 0.8rem;
-    color: darkblue;
-  }
-
-  .test-class {
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    max-width: 70%;
-    width: fit-content;
-    word-wrap: break-word;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: darkblue;
   }
 
@@ -60,42 +53,55 @@
     border-radius: 10px;
     max-width: 60%;
     color: darkblue;
-
   }
 
   #new_question {
-    border-top: 1px solid $gray-200;
-    padding: 1rem;
-    width: 50vw;
+    // border-top: 1px solid $gray-200;
+    // padding: 1rem;
+    width: 100%; // Stretch to full width of parent (chatbot)
+    display: flex; // Ensure flexbox for input stretching
 
     .form-group {
       margin-bottom: 0;
     }
+
+    .input-group {
+      width: 100%; // Stretch to full width of #new_question
+      display: flex;
+      align-items: center; // Vertically align input and button
+    }
+
+    .full-width-input {
+      flex: 1; // Allow input to take up remaining space
+      margin-right: 0.5rem; // Small gap before button
+    }
+
+    .full-width-input-field {
+      width: 100%; // Stretch input field fully within its container
+      border-radius: 24px 0 0 24px; // Keep your original border-radius
+      padding: 0.5rem 1rem; // Consistent padding
+    }
+
+    #new-question-button {
+      border-radius: 0 16px 16px 0;
+      background-color: $sad;
+      border: 2px solid $sad;
+      padding: 0.5rem 1rem; // Match input padding
+      white-space: nowrap; // Prevent button text from wrapping
+    }
+
+    // #question_user_question {
+      // Remove this; we’re using .full-width-input-field instead
+    // }
   }
 
-  #new-question-button {
-    border-radius: 0 24px 24px 0;
-    background-color: $sad;
-    border: 2px solid $sad;
-  }
+  // #new-question-button {
+  //   border-radius: 0 16px 16px 0;
+  //   background-color: $sad;
+  //   border: 2px solid $sad;
+  // }
 
   #question_user_question {
-    border-radius: 24px 0 0 24px;
+    border-radius: 16px 0 0 16px;
   }
-
 }
-// .user-message {
-//   align-self: flex-start;
-//   background-color: #d1e7fd;
-//   padding: 10px;
-//   border-radius: 10px;
-//   max-width: 60%;
-// }
-
-// .ai-message {
-//   align-self: flex-end;
-//   background-color: #f0f0f0;
-//   padding: 10px;
-//   border-radius: 10px;
-//   max-width: 60%;
-// }
