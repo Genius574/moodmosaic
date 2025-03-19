@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # validates :password, presence: true
   has_many :moods, dependent: :destroy
   has_many :mood_logs, dependent: :destroy
+  has_many :questions
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
   def current_mood
