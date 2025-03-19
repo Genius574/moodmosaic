@@ -1,61 +1,42 @@
-<div class="container my-5">
-
-<h1 style="text-align: center"><%= @mood.category.name %>  playlists and blogs for a </h1>
-<h1 style="text-align: center"><%=@mood.feeling%> feeling </h1>
-
-
-<% @all_content.each do |content| %>
-<% if content.class == Content %>
-<% case content.content_type %>
-<% when 'image' %>
-
-<%= cl_image_tag(content.photo.key, class: "custom-image") %>
-<% when 'blog' %>
- <div class="blog-card">
-      <%= link_to content_path(content), class: 'card-link' do %>
-        <div class="card-body">
-          <h5 class="card-title"><%= content.title %></h5>
-#
-            <%= link_to 'read more...', content_path(content) %>
-
-        </div>
-      <% end %>
-    </div>
-<% when 'quote' %>
-<div class="quote-card">
-      <%= link_to content_path(content), class: 'card-link' do %>
-        <div class="card-body">
-          <h5 class="card-title">"<%= content.title %>"</h5>
-
-
-
-        </div>
-      <% end %>
-    </div>
-<% end %>
-
-<% else %>
-
-  <% if content[:preview_url] %>
-    <p>Preview:</p>
-    <audio controls>
-      <source src="<%= content[:preview_url] %>" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  <% end %>
-  <iframe src="<%= content[:embed_url] %>" frameborder="1" allowtransparency="true" allow="encrypted-media"></iframe>
-
-<% end %>
-<% end %>
+<div class="filter-buttons">
+  <%= link_to "All", contents_path, class: "btn btn-secondary #{'active' unless @filter}" %>
+  <%= link_to "Blogs", contents_path(filter: 'blog'), class: "btn btn-secondary #{@filter == 'blog' ? 'active' : ''}" %>
+  <%= link_to "Images", contents_path(filter: 'image'), class: "btn btn-secondary #{@filter == 'image' ? 'active' : ''}" %>
+  <%= link_to "Quotes", contents_path(filter: 'quote'), class: "btn btn-secondary #{@filter == 'quote' ? 'active' : ''}" %>
+  <%= link_to "Playlists", contents_path(filter: 'spotify'), class: "btn btn-secondary #{@filter == 'spotify' ? 'active' : ''}" %>
 </div>
-<%# @contents.each do |content| %>
-  <%# end %>
-  <!--</div>
-<hr>
-<div class="container">
-    <div class="cards">
-  <%# @songs.each do |song| %>-->
-  <%# <div class="card-category"> %>
-  <%# end %>
-  <!--    </div>
--->
+<div class="container my-5">
+  <h1 style="text-align: center"><%= @mood.category.name %> playlists and blogs for a </h1>
+  <h1 style="text-align: center"><%= @mood.feeling %> feeling </h1>
+  <% @all_content.each do |content| %>
+    <% if content.is_a?(Content) %>
+      <% case content.content_type %>
+      <% when 'image' %>
+        <%= cl_image_tag(content.photo.key, class: "custom-image") %>
+      <% when 'blog' %>
+        <div class="blog-card">
+          <%= link_to content_path(content), class: 'card-link' do %>
+            <div class="card-body">
+              <h5 class="card-title"><%= content.title %></h5>
+              <%= link_to 'read more...', content_path(content) %>
+            </div>
+          <% end %>
+        </div>
+      <% when 'quote' %>
+        <div class="quote-card">
+          <%= link_to content_path(content), class: 'card-link' do %>
+            <div class="card-body">
+              <h5 class="card-title">"<%= content.title %>"</h5>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% elsif content.is_a?(Hash) && content[:content_type] == 'spotify' %>
+      <div class="spotify-card">
+        <!--<h3><%#= content[:title] %></h3>-->
+        <!--<p><%#= link_to "Open in Spotify", content[:url], target: "_blank" %></p>-->
+        <iframe src="<%= content[:embed_url] %>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    <% end %>
+  <% end %>
+</div>
