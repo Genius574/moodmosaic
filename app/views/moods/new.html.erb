@@ -8,7 +8,7 @@
   <% @moods.each do |mood| %>
     <%= button_to moods_path, class: "mood-item", params: { mood: { feeling: mood.feeling } } do %>
       <%= mood.mood_icon.html_safe %>
-      <p class="mood-text"><%= mood.feeling.capitalize %></p> <!-- Added text under icon -->
+      <p class="mood-text"><%= mood.feeling.capitalize %></p>
     <% end %>
   <% end %>
 </div>

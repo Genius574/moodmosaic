@@ -2,18 +2,10 @@ require_dependency 'spotify_service'
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
-    @blogs = Content.where(category_id: @mood.category.id, mood_id: @mood.id, content_type: "blogs")
-    @quotes = Content.where(category_id: @mood.category.id, mood_id: @mood.id, content_type: "quote")
+    @blogs = Content.where(category_id: @mood.category.id, content_type: "blogs")
+    @quotes = Content.where(category_id: @mood.category.id, content_type: "quote")
 
-    @photos = Content.where(category_id: @mood.category.id, mood_id: @mood.id, content_type: "image").to_a
-
-    if @photos.size < 4
-      (4 - @photos.size).times do
-        photo = Content.create(mood_id: @mood.id, category_id: @mood.category.id, content_type: "image")
-        photo.set_photo
-        @photos << photo
-      end
-    end
+    @photos = Content.where(category_id: @mood.category.id, content_type: "image")
 
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
