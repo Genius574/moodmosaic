@@ -1,5 +1,5 @@
 # db/seeds.rb
-
+require 'open-uri'
 # First, delete all contents that reference moods
 Content.delete_all
 
@@ -83,6 +83,64 @@ Content.create!(content_type: "quote", category: serious_category, title: "Succe
 Content.create!(content_type: "quote", category: serious_category, title: "Every decision you make sets the course for your future. Take ownership of your choices, and remember that you have the power to change your destiny with each step you take.", url: "#", mood_id: Mood.all.sample.id)
 
 puts "Motivational quotes created based on moods and categories."
+
+uplifting_images = [
+  'https://images.unsplash.com/photo-1732058824460-d89cb7b4a38f?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1674242189292-edce82b96e4b?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  # 'https://unsplash.com/photos/woman-in-black-and-white-checkered-long-sleeve-shirt-sitting-beside-man-in-green-crew-neck-l_ExpFwwOEg',
+  # 'https://unsplash.com/photos/concrete-pathway-in-flower-garden-with-no-people-P7X8o2U66t4',
+  # 'https://unsplash.com/photos/woman-in-black-pants-and-pink-shirt-standing-on-green-grass-field-during-daytime-n5trbdfW7fM'
+]
+
+moods = Mood.all
+category = Category.where(name: 'Uplifting')
+uplifting_images.each do |image|
+  photo = Content.create(mood_id: moods.sample.id, category_id: category.all.sample.id, url: "image", content_type: "image")
+  file = URI.parse(image).open
+  photo.photo.attach(io: file, filename: "#{category.name} photo", content_type: "image/png")
+end
+
+# Emotional images URLs
+emotional_images = [
+  'https://images.unsplash.com/photo-1631816591249-ba33dde81a23?q=80&w=446&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1484639726803-f17534cedb15?q=80&w=421&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+#   'https://unsplash.com/photos/a-man-sitting-on-a-bench-with-his-head-down-nT2u--BJWlE',
+#   'https://unsplash.com/photos/woman-in-black-shirt-covering-face-with-hands-3I0jy73l8u8'
+ ]
+category = Category.where(name: 'Emotional')
+emotional_images.each do |image|
+  photo = Content.create(mood_id: moods.sample.id, category_id: category.all.sample.id, url: "image", content_type: "image")
+  file = URI.parse(image).open
+  photo.photo.attach(io: file, filename: "#{category.name} photo", content_type: "image/png")
+end
+
+# Calming images URLs
+calming_images = [
+  'https://images.unsplash.com/photo-1610401840013-8bb7cb17c738?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  # 'https://unsplash.com/photos/white-cat-sleeps-under-white-comforter-uy5t-CJuIK4',
+  # 'https://unsplash.com/photos/white-clouds-and-blue-sky-during-daytime-xNtwmcRP-gw'
+]
+category = Category.where(name: 'Calming')
+calming_images.each do |image|
+  photo = Content.create(mood_id: moods.sample.id, category_id: category.all.sample.id, url: "image", content_type: "image")
+  file = URI.parse(image).open
+  photo.photo.attach(io: file, filename: "#{category.name} photo", content_type: "image/png")
+end
+
+# Serious images URLs
+serious_images = [
+  'https://images.unsplash.com/photo-1573339607881-208e75e4b267?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1628493706977-cf588f61c5fc?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  # 'https://unsplash.com/photos/abandoned-building-_DAY5kuDvsU',
+  # 'https://unsplash.com/photos/burning-woods-during-night-time-YEsxGmZ4wLU'
+]
+category = Category.where(name: 'Serious')
+serious_images.each do |image|
+  photo = Content.create(mood_id: moods.sample.id, category_id: category.all.sample.id, url: "image", content_type: "image")
+  file = URI.parse(image).open
+  photo.photo.attach(io: file, filename: "#{category.name} photo", content_type: "image/png")
+end
 
 puts "Motivational quotes created for each category."
 puts "Contents created for moods and categories."

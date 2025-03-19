@@ -1,23 +1,37 @@
 .category-item {
   text-align: center;  // Center the text under the image
   background-color: #4894E1;
-  width: 55vw;
-  height: 20vh;
-  padding: 3rem;
+  width: 40vw;
+
+  padding: 1rem;
   border-radius: 20px;
+  i{
+    color: beige;       /* Text color matching the design */
+    font-size: 6rem;
+
+  }
+  p {
+    margin-bottom: 0;
+    color: beige;       /* Text color matching the design */
+
+  }
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
+  padding: 2rem;
+  display: grid;
+grid-template-columns: 1fr 1fr;
   gap: 20px;  // Adjust the gap between mood items
   justify-content: center;  // Center the images horizontally
-}
-i{
-  font-size: 6rem;
+
 }
 button {
   border: none;  // Remove the border from the button
   background: transparent;  // Remove any background color from the button
   padding: 0;  // Remove any padding around the button
+}
+
+.category-text {
+  font-size: 1.5rem;
+  margin-top: 10px;
 }
