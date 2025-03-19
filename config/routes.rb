@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :moods, only: %i[index new create edit update]
   resources :contents, only: %i[index show]
   resources :activity_logs, only: [:index]
+  resources :questions, only: %i[index create]
 
   get '/auth/spotify/callback', to: 'omniauth_callbacks#spotify'
 end
