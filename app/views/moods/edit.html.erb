@@ -1,8 +1,17 @@
-<div class="container">
-  <h1 style="text-align: center">It sounds like you're feeling <%= @mood.feeling %> today. What would feel helpful to focus on right now?</h1>
-  <div class="categories d-flex">
-    <% @categories.each do |category| %>
-      <%= button_to category.category_icon.html_safe, mood_path(@mood), class: "category-item", method: :patch, params: { mood: { category: category}} %>
-    <% end %>
-  </div>
+<div class="container my-5">
+
+  <h1 style="text-align: center">So you're feeling <%= @mood.feeling %>?</h1>
+  <h1 style="text-align: center"> What content would feel helpful right now?</h1>
+
+ <div class="categories">
+  <% @categories.each do |category| %>
+    <%= button_to mood_path(@mood), class: "category-item", method: :patch, params: { mood: { category: category } } do %>
+
+      <%= category.category_icon.html_safe%>
+
+      <p class="category-text"><%= category.name.capitalize %></p> <!-- Added text under icon -->
+        <% end %>
+        <% end %>
+
+</div>
 </div>

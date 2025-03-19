@@ -1,25 +1,41 @@
 .moods {
   display: flex;
   flex-direction: column;
-  gap: 20px;  // Adjust the gap between mood items
-  justify-content: center;  // Center the images horizontally
+  gap: 20px;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .mood-item {
-  text-align: center;  // Center the text under the image
+  text-align: center;
   background-color: #4894E1;
   width: 55vw;
-  height: 20vh;
-  padding: 3rem;
+
+  padding: 1rem;
   border-radius: 20px;
+  margin-bottom: 1rem;
+  p {
+    margin-bottom: 0;
+    color: beige;
+  }
 
   i{
     font-size: 6rem;
+    margin-top: 0.5rem;
+    color: beige;
   }
 }
 
 button {
-  border: none;  // Remove the border from the button
-  background: transparent;  // Remove any background color from the button
-  padding: 0;  // Remove any padding around the button
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.mood-text {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: black;
+  padding-bottom: 3px;
+  font-size: 25px;
 }
