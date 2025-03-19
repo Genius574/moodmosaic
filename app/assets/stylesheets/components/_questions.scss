@@ -1,7 +1,7 @@
 .chatbot {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 3rem;
   font-size: 0.8rem;
 
   h1 {
@@ -46,17 +46,30 @@
     padding: 10px;
     border-radius: 10px;
     max-width: 60%;
+    color: darkblue;
 
   }
 
   #new_question {
     border-top: 1px solid $gray-200;
     padding: 1rem;
+    width: 50vw;
 
     .form-group {
       margin-bottom: 0;
     }
   }
+
+  #new-question-button {
+    border-radius: 0 24px 24px 0;
+    background-color: $sad;
+    border: 2px solid $sad;
+  }
+
+  #question_user_question {
+    border-radius: 24px 0 0 24px;
+  }
+
 }
 // .user-message {
 //   align-self: flex-start;
