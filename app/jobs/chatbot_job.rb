@@ -10,7 +10,7 @@ class ChatbotJob < ApplicationJob
 
     # Turbo Streams: Update UI in real time
     Turbo::StreamsChannel.broadcast_update_to(
-      "question_#{@question.id}",
+      "questions",
       target: "question_#{@question.id}",
       partial: "questions/question",
       locals: { question: @question }
@@ -23,14 +23,19 @@ class ChatbotJob < ApplicationJob
     client = OpenAI::Client.new
     messages = format_messages_for_openai
 
-    chatgpt_response = client.chat(
-      parameters: {
-        model: "gpt-4o-mini",
-        messages: messages
-      }
-    )
+    begin
+      chatgpt_response = client.chat(
+        parameters: {
+          model: "gpt-4o-mini",
+          messages: messages
+        }
+      )
 
-    chatgpt_response["choices"][0]["message"]["content"]
+      return chatgpt_response.dig("choices", 0, "message", "content") || "I'm sorry, I couldn't generate a response right now."
+    rescue StandardError => e
+      Rails.logger.error "Chatbot API Error: #{e.message}"
+      return "Oops, something went wrong. Please try again later."
+    end
   end
 
   def format_messages_for_openai
@@ -40,9 +45,9 @@ class ChatbotJob < ApplicationJob
 
     # Structure messages for OpenAI
     messages = [
-      { role: "system", content: "You are a compassionate therapist trained in mindfulness and emotional well-being. #{mood_context} Tailor your response accordingly." }
+      { role: "system", content: "You are a compassionate therapist trained in mindfulness and emotional well-being. #{mood_context} Tailor your response accordingly. Your responses must be less than 200 words always!" }
     ]
-
+    puts messages
     @question.user.questions.last(5).each do |q|
       messages << { role: "user", content: q.user_question }
       messages << { role: "assistant", content: q.ai_answer || "..." }

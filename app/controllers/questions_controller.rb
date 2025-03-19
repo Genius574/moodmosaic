@@ -10,11 +10,15 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new(question_params)
 
     if @question.save
-      ChatbotJob.perform_now(@question)
+      ChatbotJob.perform_later(@question) # Run in background
+
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:questions, partial: "questions/question", locals: { question: @question })
-
+          render turbo_stream: turbo_stream.append(
+            "questions",
+            partial: "questions/question",
+            locals: { question: @question }
+          )
         end
         format.html { redirect_to questions_path }
       end
