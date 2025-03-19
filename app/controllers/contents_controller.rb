@@ -2,7 +2,7 @@ require_dependency 'spotify_service'
 class ContentsController < ApplicationController
   def index
     @mood = current_user.moods.order(updated_at: :asc).last
-    @blogs = Content.where(category_id: @mood.category.id, content_type: "blogs")
+    @blogs = Content.where(category_id: @mood.category.id, content_type: "blog")
     @quotes = Content.where(category_id: @mood.category.id, content_type: "quote")
 
     @photos = []
@@ -11,23 +11,29 @@ class ContentsController < ApplicationController
       photo.set_photo
       @photos << photo
     end
+
     @spotify_service = SpotifyService.new(@mood)
     @songs = @spotify_service.fetch_playlists
 
-    @all_content = []
-    @blogs.each do |blog|
-      @all_content << blog
-    end
-    @photos.each do |photo|
-      @all_content << photo
-    end
-    @quotes.each do |quote|
-      @all_content << quote
-    end
-    @songs[0..3].each do |song|
-      @all_content << song
-    end
-    @all_content.shuffle!
+    @filter = params[:filter]
+    @all_content = case @filter
+                   when 'blog'
+                     @blogs
+                   when 'image'
+                     @photos
+                   when 'quote'
+                     @quotes
+                   when 'spotify'
+                     @songs
+                   else
+                     # Default: show all content
+                     [].tap do |content|
+                       content.concat(@blogs)
+                       content.concat(@photos)
+                       content.concat(@quotes)
+                       content.concat(@songs[0..3])
+                     end.shuffle!
+                   end
   end
 
   def show

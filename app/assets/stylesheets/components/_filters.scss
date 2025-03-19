@@ -1,0 +1,12 @@
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-buttons .btn {
+  margin-right: 10px;
+}
+
+.filter-buttons .btn.active {
+  background-color: #007bff;
+  color: white;
+}
