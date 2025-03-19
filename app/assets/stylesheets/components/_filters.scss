@@ -1,12 +1,24 @@
 .filter-buttons {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+
+
+
+  a {
+    font-size: small;
+  }
 }
 
 .filter-buttons .btn {
   margin-right: 10px;
+  background-color: #7308b8;
+  border-bottom: 1px solid beige;
+
 }
 
 .filter-buttons .btn.active {
+  border-bottom: 1px solid beige;
   background-color: #007bff;
   color: white;
 }

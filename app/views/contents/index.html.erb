@@ -6,7 +6,7 @@
   <%= link_to "Playlists", contents_path(filter: 'spotify'), class: "btn btn-secondary #{@filter == 'spotify' ? 'active' : ''}" %>
 </div>
 <div class="container my-5">
-  <h1 style="text-align: center"><%= @mood.category.name %> playlists and blogs for a </h1>
+  <h1 style="text-align: center"><%= @mood.category.name %> content for a </h1>
   <h1 style="text-align: center"><%= @mood.feeling %> feeling </h1>
   <% @all_content.each do |content| %>
     <% if content.is_a?(Content) %>
@@ -18,24 +18,25 @@
           <%= link_to content_path(content), class: 'card-link' do %>
             <div class="card-body">
               <h5 class="card-title"><%= content.title %></h5>
+              <% if content.blog %>
+                <p><%= content.blog.truncate(60) %>...</p>
+              <% end %>
               <%= link_to 'read more...', content_path(content) %>
             </div>
           <% end %>
         </div>
       <% when 'quote' %>
         <div class="quote-card">
-          <%= link_to content_path(content), class: 'card-link' do %>
-            <div class="card-body">
-              <h5 class="card-title">"<%= content.title %>"</h5>
-            </div>
-          <% end %>
+          <!--<div class="card-body">-->
+            <h5><em>"<%= content.title %>"</em> </h5>
+
         </div>
       <% end %>
-    <% elsif content.is_a?(Hash) && content[:content_type] == 'spotify' %>
+    <% else %>
       <div class="spotify-card">
         <!--<h3><%#= content[:title] %></h3>-->
         <!--<p><%#= link_to "Open in Spotify", content[:url], target: "_blank" %></p>-->
-        <iframe src="<%= content[:embed_url] %>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="<%= content[:embed_url] %>" width="280" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     <% end %>
   <% end %>

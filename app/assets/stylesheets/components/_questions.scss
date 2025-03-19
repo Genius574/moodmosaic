@@ -5,7 +5,7 @@
   font-size: 0.8rem;
 
   h1 {
-    border-bottom: 1px solid $gray-200;
+    // border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
     padding: 1rem;
   }
@@ -14,6 +14,8 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+    border: 1px solid $gray-200;
+    border-radius: 24px;
   }
 
   .question {
@@ -34,16 +36,6 @@
     color: darkblue;
   }
 
-  .test-class {
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    max-width: 70%;
-    width: fit-content;
-    word-wrap: break-word;
-    font-size: 0.8rem;
-    color: darkblue;
-  }
 
   .user-question {
     align-self: flex-start;
@@ -64,7 +56,7 @@
   }
 
   #new_question {
-    border-top: 1px solid $gray-200;
+    // border-top: 1px solid $gray-200;
     padding: 1rem;
     width: 50vw;
 
@@ -81,6 +73,7 @@
 
   #question_user_question {
     border-radius: 24px 0 0 24px;
+
   }
 
 }
