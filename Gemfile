@@ -56,6 +56,7 @@ gem "sassc-rails"
 gem 'omniauth'
 gem 'omniauth-spotify'
 gem 'rspotify'
+gem "cloudinary"
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
