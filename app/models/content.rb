@@ -3,7 +3,7 @@ class Content < ApplicationRecord
   belongs_to :category
   belongs_to :mood, optional: true
   has_one_attached :photo
-  enum content_type: %i[spotify blogs quote image]
+  enum content_type: %i[spotify blog quote image]
 
   def blog
     if super.blank?
