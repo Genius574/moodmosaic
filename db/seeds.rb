@@ -21,23 +21,43 @@ puts "Categories created: Uplifting, Emotional, Calming, Serious"
 # Create Users
 user1 = User.create(email: 'siza@mood.com', password: 'password123', first_name: 'Siza', last_name: 'Mpafa')
 user2 = User.create(email: 'genius@mood.com', password: 'password123', first_name: 'Genius', last_name: 'Chakurira')
-user3 = User.create(email: 'moodmosaic@mood.com', password: 'password123', first_name: 'Mood', last_name: 'Mosaic')
+user3 = User.create(email: 'moodmosaic@mood.com', password: 'password123', first_name: 'John', last_name: 'Brooks')
 
 
 puts "Users created: John, Jane, Alice"
 
 # Create Moods and associate them with users and categories
 mood1 = Mood.create(user: user1, category: uplifting_category, feeling: "happy")
-mood2 = Mood.create(user: user2, category: emotional_category, feeling: "meh")
-mood3 = Mood.create(user: user3, category: calming_category, feeling: "sad")
-mood4 = Mood.create(user: user1, category: uplifting_category, feeling: "happy")
-mood5 = Mood.create(user: user3, category: serious_category, feeling: "meh")
-mood6 = Mood.create(user: user1, category: serious_category, feeling: "happy")
-mood7 = Mood.create(user: user3, category: calming_category, feeling: "meh")
-mood8 = Mood.create(user: user2, category: emotional_category, feeling: "sad")
-mood9 = Mood.create(user: user1, category: uplifting_category, feeling: "meh")
-mood10 = Mood.create(user: user2, category: emotional_category, feeling: "happy")
-mood11 = Mood.create(user: user2, category: calming_category, feeling: "sad")
+mood2 = Mood.create(user: user1, category: emotional_category, feeling: "meh")
+mood3 = Mood.create(user: user1, category: calming_category, feeling: "sad")
+mood4 = Mood.create(user: user1, category: uplifting_category, feeling: "meh")
+mood5 = Mood.create(user: user1, category: serious_category, feeling: "happy")
+mood6 = Mood.create(user: user1, category: calming_category, feeling: "meh")
+mood7 = Mood.create(user: user1, category: emotional_category, feeling: "happy")
+mood8 = Mood.create(user: user1, category: uplifting_category, feeling: "sad")
+mood9 = Mood.create(user: user1, category: serious_category, feeling: "meh")
+mood10 = Mood.create(user: user1, category: emotional_category, feeling: "sad")
+mood11 = Mood.create(user: user1, category: calming_category, feeling: "happy")
+mood12 = Mood.create(user: user1, category: uplifting_category, feeling: "meh")
+mood13 = Mood.create(user: user1, category: serious_category, feeling: "sad")
+mood14 = Mood.create(user: user1, category: emotional_category, feeling: "meh")
+mood15 = Mood.create(user: user1, category: calming_category, feeling: "sad")
+mood16 = Mood.create(user: user1, category: serious_category, feeling: "happy")
+mood17 = Mood.create(user: user1, category: uplifting_category, feeling: "happy")
+mood18 = Mood.create(user: user1, category: emotional_category, feeling: "meh")
+mood19 = Mood.create(user: user1, category: calming_category, feeling: "happy")
+mood20 = Mood.create(user: user1, category: serious_category, feeling: "sad")
+mood21 = Mood.create(user: user1, category: uplifting_category, feeling: "happy")
+mood22 = Mood.create(user: user1, category: emotional_category, feeling: "sad")
+mood23 = Mood.create(user: user1, category: calming_category, feeling: "meh")
+mood24 = Mood.create(user: user1, category: serious_category, feeling: "meh")
+mood25 = Mood.create(user: user1, category: uplifting_category, feeling: "sad")
+mood26 = Mood.create(user: user1, category: emotional_category, feeling: "happy")
+mood27 = Mood.create(user: user1, category: calming_category, feeling: "meh")
+mood28 = Mood.create(user: user1, category: serious_category, feeling: "happy")
+mood29 = Mood.create(user: user1, category: emotional_category, feeling: "happy")
+mood30 = Mood.create(user: user1, category: emotional_category, feeling: "sad")
+
 
 puts "Moods created for users."
 
