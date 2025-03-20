@@ -3,28 +3,30 @@
   flex-direction: column;
   margin-bottom: 3rem;
   font-size: 0.8rem;
-
+  height: 80vh; // Fixed height for the entire chatbot (adjust as needed)
+  max-width: 100%; // Fit screen width
+  border: 1px solid #d1e7fd3b; // Optional: frame the whole chatbot
   h1 {
-    // border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
     padding: 1rem;
+    flex-shrink: 0; // Fixed header size
   }
 
   #questions {
-    height: 100%;
-    overflow: scroll;
+    height: 60vh; // Fixed height for message area (adjust as needed)
+    overflow-y: auto; // Scroll messages only when they overflow
     padding: 1rem;
     border: 1px solid #d1e7fd3b;
     border-radius: 24px;
     background-color: #d1e7fd3b;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Added box shadow
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95vw;
   }
 
   .question {
     display: flex;
     flex-direction: column;
-    min-height: 60vh;
-    min-width: 80vw;
+    // No height or width constraints here; let messages flow naturally
   }
 
   .user-question, .ai-answer {
@@ -56,52 +58,41 @@
   }
 
   #new_question {
-    // border-top: 1px solid $gray-200;
-    // padding: 1rem;
-    width: 100%; // Stretch to full width of parent (chatbot)
-    display: flex; // Ensure flexbox for input stretching
+    width: 100%; // Full width of chatbot
+    flex-shrink: 0; // Fixed input size
+    padding: 1rem 0; // Reduced padding to keep it compact
 
     .form-group {
       margin-bottom: 0;
     }
 
     .input-group {
-      width: 100%; // Stretch to full width of #new_question
+      width: 100%;
       display: flex;
-      align-items: center; // Vertically align input and button
+      align-items: center;
     }
 
-    .full-width-input {
-      flex: 1; // Allow input to take up remaining space
-      margin-right: 0.5rem; // Small gap before button
+    .form-floating {
+      flex: 1;
+      margin-right: 0.5rem;
     }
 
-    .full-width-input-field {
-      width: 100%; // Stretch input field fully within its container
-      border-radius: 24px 0 0 24px; // Keep your original border-radius
-      padding: 0.5rem 1rem; // Consistent padding
+    .form-control {
+      width: 100%;
+      border-radius: 16px 0 0 16px;
+      padding: 0.5rem 1rem;
     }
 
     #new-question-button {
       border-radius: 0 16px 16px 0;
       background-color: $sad;
       border: 2px solid $sad;
-      padding: 0.5rem 1rem; // Match input padding
-      white-space: nowrap; // Prevent button text from wrapping
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
     }
 
-    // #question_user_question {
-      // Remove this; we’re using .full-width-input-field instead
-    // }
-  }
-
-  // #new-question-button {
-  //   border-radius: 0 16px 16px 0;
-  //   background-color: $sad;
-  //   border: 2px solid $sad;
-  // }
-
-  #question_user_question {
-    border-radius: 16px 0 0 16px;
+    #question_user_question {
+      border-radius: 16px 0 0 16px;
+    }
   }
 }

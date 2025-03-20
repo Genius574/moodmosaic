@@ -3,6 +3,5 @@
     <%= turbo_stream_from "questions" %>
   </div>
   <p class="user-question"><%= question.user_question %></p>
-  <p class="ai-answer"><%= sanitize(question.ai_answer&.gsub("**", "")) || "Thinking..."%></p>
-    <%= render "form", question: @question %>
+  <p class="ai-answer"><%= sanitize(question.ai_answer) || "Thinking..." %></p>
 </div>
