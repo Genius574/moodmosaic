@@ -11,6 +11,7 @@ class ContentsController < ApplicationController
     @songs = @spotify_service.fetch_playlists
 
     @filter = params[:filter]
+    
     @all_content = case @filter
                    when 'blog'
                      @blogs
