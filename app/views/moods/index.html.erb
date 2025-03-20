@@ -1,7 +1,7 @@
 <div class="container">
   <div class="mood-log-header">
     <h1 class="my-4">Mood Mosaic</h1>
-    <%= link_to 'log out', '#', class: 'logout-btn' %>
+    <%= link_to 'log out', destroy_user_session_path, class: 'logout-btn' %>
   </div>
   <div class="moods-container">
     <% @moods.each do |mood| %>
