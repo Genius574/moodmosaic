@@ -1,12 +1,9 @@
 <div class="container chatbot">
   <h1>Chat with us</h1>
-
+  <%= turbo_stream_from "questions" %>
   <div id="questions">
     <%= render @questions %>
   </div>
-
   <%= render "form", question: @question %>
   <%#= render "question", question: @question %>
 </div>
-
-
