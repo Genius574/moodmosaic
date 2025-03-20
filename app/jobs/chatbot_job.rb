@@ -5,7 +5,8 @@ class ChatbotJob < ApplicationJob
     return if question.user_question.blank?
     Rails.logger.info "Running ChatbotJob for Question ID: #{question.id}, Content: #{question.user_question}"
     @question = question
-    response = fetch_ai_response&.gsub!(/(\s)\*\*/, '\1<strong>')&.gsub!(/\*\*(\s)/, '</strong>\1')
+    response = fetch_ai_response
+    response = response.gsub(/(\s)\*\*/, '\1<strong>').gsub(/\*\*(\s)/, '</strong>\1') if response.present?
     @question.update(ai_answer: response)
 
     # Turbo Streams: Update UI in real time
