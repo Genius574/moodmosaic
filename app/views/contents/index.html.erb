@@ -1,13 +1,13 @@
-<div class="filter-buttons">
-  <%= link_to "All", contents_path, class: "btn btn-secondary #{'active' unless @filter}" %>
-  <%= link_to "Blogs", contents_path(filter: 'blog'), class: "btn btn-secondary #{@filter == 'blog' ? 'active' : ''}" %>
-  <%= link_to "Images", contents_path(filter: 'image'), class: "btn btn-secondary #{@filter == 'image' ? 'active' : ''}" %>
-  <%= link_to "Quotes", contents_path(filter: 'quote'), class: "btn btn-secondary #{@filter == 'quote' ? 'active' : ''}" %>
-  <%= link_to "Playlists", contents_path(filter: 'spotify'), class: "btn btn-secondary #{@filter == 'spotify' ? 'active' : ''}" %>
-</div>
 <div class="container my-5">
-  <h1 style="text-align: center"><%= @mood.category.name %> playlists and blogs for a </h1>
-  <h1 style="text-align: center"><%= @mood.feeling %> feeling </h1>
+  <h3 style="text-align: center"><%= @mood.category.name %> content for a </h3>
+  <h3 style="text-align: center"><%= @mood.feeling %> feeling </h3>
+<div class="filter-buttons my-3">
+  <%= link_to "All", contents_path, class: "filter-button btn #{'active' unless @filter}" %>
+  <%= link_to "Blogs", contents_path(filter: 'blog'), class: "filter-button btn #{@filter == 'blog' ? 'active' : ''}" %>
+  <%= link_to "Images", contents_path(filter: 'image'), class: "filter-button btn #{@filter == 'image' ? 'active' : ''}" %>
+  <%= link_to "Quotes", contents_path(filter: 'quote'), class: "filter-button btn #{@filter == 'quote' ? 'active' : ''}" %>
+  <%= link_to "Playlists", contents_path(filter: 'spotify'), class: "filter-button btn #{@filter == 'spotify' ? 'active' : ''}" %>
+</div>
   <% @all_content.each do |content| %>
     <% if content.is_a?(Content) %>
       <% case content.content_type %>
@@ -18,24 +18,25 @@
           <%= link_to content_path(content), class: 'card-link' do %>
             <div class="card-body">
               <h5 class="card-title"><%= content.title %></h5>
+              <% if content.blog %>
+                <p><%= content.blog.truncate(60) %>...</p>
+              <% end %>
               <%= link_to 'read more...', content_path(content) %>
             </div>
           <% end %>
         </div>
       <% when 'quote' %>
         <div class="quote-card">
-          <%= link_to content_path(content), class: 'card-link' do %>
-            <div class="card-body">
-              <h5 class="card-title">"<%= content.title %>"</h5>
-            </div>
-          <% end %>
+          <!--<div class="card-body">-->
+            <h5><em>"<%= content.title %>"</em> </h5>
+
         </div>
       <% end %>
-    <% elsif content.is_a?(Hash) && content[:content_type] == 'spotify' %>
+    <% else %>
       <div class="spotify-card">
         <!--<h3><%#= content[:title] %></h3>-->
         <!--<p><%#= link_to "Open in Spotify", content[:url], target: "_blank" %></p>-->
-        <iframe src="<%= content[:embed_url] %>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="<%= content[:embed_url] %>" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     <% end %>
   <% end %>

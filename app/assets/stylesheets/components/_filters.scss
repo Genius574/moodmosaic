@@ -1,12 +1,32 @@
 .filter-buttons {
   margin-bottom: 20px;
-}
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid beige;
+  width: 100vw;
 
-.filter-buttons .btn {
-  margin-right: 10px;
-}
+  a {
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.7rem;
+    color: beige;
+  }
 
-.filter-buttons .btn.active {
-  background-color: #007bff;
-  color: white;
+
+
+  .filter-button .btn {
+    margin-right: 10px;
+    background-color: #7308b8;
+    display: inline-block;
+
+    border-radius: 12px 12px 0 0 !important;
+    border-top: 1px solid beige !important;
+    border-left: 1px solid beige !important;
+    border-right: 1px solid beige !important;
+
+    .active {
+      border-bottom: 0px solid beige !important;
+      background-color: #007bff !important;
+    }
+  }
 }

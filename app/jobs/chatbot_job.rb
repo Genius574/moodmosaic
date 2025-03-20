@@ -5,7 +5,7 @@ class ChatbotJob < ApplicationJob
     return if question.user_question.blank?
     Rails.logger.info "Running ChatbotJob for Question ID: #{question.id}, Content: #{question.user_question}"
     @question = question
-    response = fetch_ai_response
+    response = fetch_ai_response.gsub!(/(\s)\*\*/, '\1<strong>').gsub!(/\*\*(\s)/, '</strong>\1')
     @question.update(ai_answer: response)
 
     # Turbo Streams: Update UI in real time
@@ -45,7 +45,7 @@ class ChatbotJob < ApplicationJob
 
     # Structure messages for OpenAI
     messages = [
-      { role: "system", content: "You are a compassionate therapist trained in mindfulness and emotional well-being. #{mood_context} Tailor your response accordingly. Your responses must be less than 200 words always!" }
+      { role: "system", content: "You are a compassionate therapist trained in mindfulness and emotional well-being. #{mood_context} Tailor your response accordingly. Your responses should be concise." }
     ]
     puts messages
     @question.user.questions.last(5).each do |q|

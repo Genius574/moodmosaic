@@ -1,14 +1,15 @@
-<div class="container my-5">
+<div class="container my-4">
 
 <h1 style="text-align: center">Hey, <%= current_user.first_name %>! </h1>
-<h1 style="text-align: center">How are you feeling right now? </h1>
+<h3 style="text-align: center">How are you feeling right now? </h3>
 
 
-
-  <% @moods.each do |mood| %>
-    <%= button_to moods_path, class: "mood-item", params: { mood: { feeling: mood.feeling } } do %>
-      <%= mood.mood_icon.html_safe %>
-      <p class="mood-text"><%= mood.feeling.capitalize %></p>
+<div class="moods">
+    <% @moods.each do |mood| %>
+      <%= button_to moods_path, class: "category-item m-1", params: { mood: { feeling: mood.feeling } } do %>
+        <%= mood.mood_icon.html_safe %>
+        <p class="category-text"><%= mood.feeling.capitalize %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
