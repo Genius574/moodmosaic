@@ -11,10 +11,16 @@
 @import "components/index";
 @import "pages/index";
 body{
-  background-color: #7308B8;
+  background-color: #7308b8;
   h1 {
-    color: #4894E1;
-    font-size: 2.435rem;
+    color: #4894e1;
+    font-size: 2rem;
+
     font-weight: bold;
   }
+
+  h3 {
+    color: #4894e1;
+  }
+
 }

@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
   gap: 4px;
+  width:96vw;
 }
 .card-body--happy {
   background-color: $happy;
